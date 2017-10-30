@@ -84,3 +84,8 @@
 .content-upgrade-log {
   color: red;
 }
+
+.h5p-iframe-wrapper,
+.h5p-content {
+  margin-bottom: 20px;
+}
