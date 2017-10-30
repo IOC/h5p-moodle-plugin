@@ -73,5 +73,16 @@ if (trim(strip_tags($content['intro']))) {
 \mod_hvp\framework::printMessages('info', \mod_hvp\framework::messages('info'));
 \mod_hvp\framework::printMessages('error', \mod_hvp\framework::messages('error'));
 
+// Find cm context.
+$context = \context_module::instance($cm->id);
+
+if (has_capability('mod/hvp:viewallresults', $context)) {
+    $urlparams = array('id' => $cm->id);
+    $url = new moodle_url('/mod/hvp/grade.php', $urlparams);
+    echo $OUTPUT->container_start('singlebutton');
+    echo  '<center><a href="' . $url . '" class="btn btn-secondary">' . get_string('hvp:viewallresults', 'mod_hvp') . '</a></center>';
+    echo $OUTPUT->container_end();
+}
+
 $view->outputview();
 echo $OUTPUT->footer();
